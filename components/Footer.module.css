@@ -97,3 +97,19 @@
   text-align: right;
   line-height: 1.8;
 }
+
+@media (max-width: 768px) {
+  .footer {
+    grid-template-columns: 1fr;
+    padding: 48px 24px;
+    gap: 36px;
+  }
+  .brand { grid-column: 1; }
+  .bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .legal { text-align: left; max-width: 100%; }
+  .copy { font-size: 8px; }
+}

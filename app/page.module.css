@@ -529,3 +529,72 @@
   letter-spacing: 2px;
   font-family: 'Courier Prime', monospace;
 }
+
+/* ── TABLET (max 1024px) ─────────────────────────────── */
+@media (max-width: 1024px) {
+  .hero { padding: 0 40px 60px; }
+
+  .heroFooter { gap: 0; flex-wrap: wrap; }
+  .heroStatWrap { gap: 40px; }
+  .heroDivider { margin: 0 40px 8px; }
+
+  .portfolioGrid { grid-template-columns: repeat(2, 1fr); }
+  .numbers { grid-template-columns: repeat(3, 1fr); }
+  .leaderGrid { grid-template-columns: repeat(2, 1fr); }
+
+  .about { grid-template-columns: 1fr; min-height: auto; }
+  .aboutLeft { border-right: none; border-bottom: 1px solid var(--border); padding: 60px 40px; }
+  .aboutRight { padding: 60px 40px; }
+
+  .portfolioHeader { flex-direction: column; align-items: flex-start; gap: 16px; padding: 0 40px 40px; }
+  .portfolioCount { text-align: left; }
+
+  .leadership { padding: 80px 40px; }
+  .press { padding: 60px 40px; }
+  .statement { padding: 80px 40px; }
+}
+
+/* ── MOBILE (max 768px) ──────────────────────────────── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 24px 60px;
+    min-height: 100svh;
+  }
+
+  .heroBgText { font-size: clamp(60px, 22vw, 120px); }
+  .heroLine { height: 48px; margin-bottom: 24px; }
+  .heroEyebrow { font-size: 8px; letter-spacing: 3px; }
+
+  .heroH1 { font-size: clamp(40px, 10vw, 64px); margin-bottom: 24px; }
+  .heroSub { font-size: 13px; letter-spacing: 0; margin-bottom: 40px; }
+
+  .heroFooter { flex-direction: column; align-items: flex-start; gap: 24px; }
+  .heroStatWrap { flex-direction: row; gap: 32px; }
+  .heroDivider { display: none; }
+  .heroStatNum { font-size: 36px; }
+
+  .about { grid-template-columns: 1fr; }
+  .aboutLeft { padding: 60px 24px; border-right: none; border-bottom: 1px solid var(--border); }
+  .aboutRight { padding: 48px 24px; gap: 24px; }
+  .aboutTitle { font-size: clamp(32px, 8vw, 48px); }
+
+  .portfolioGrid { grid-template-columns: 1fr; }
+  .portfolioHeader { padding: 0 24px 32px; }
+  .portfolioCount { display: none; }
+  .portfolio { padding: 60px 0; }
+  .card { padding: 28px 24px; }
+
+  .numbers { grid-template-columns: repeat(2, 1fr); }
+  .numberCell { padding: 32px 24px; }
+  .numberVal { font-size: 40px; }
+
+  .statement { padding: 60px 24px; }
+  .statementAttr { font-size: 8px; letter-spacing: 2px; }
+
+  .leadership { padding: 60px 24px; }
+  .leaderGrid { grid-template-columns: 1fr; }
+
+  .press { padding: 60px 24px; }
+  .pressGrid { grid-template-columns: 1fr; }
+  .sectionTitle { font-size: clamp(32px, 8vw, 48px); margin-bottom: 32px; }
+}
