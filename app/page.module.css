@@ -1,141 +1,531 @@
-.page {
-  --background: #fafafa;
-  --foreground: #fff;
-
-  --text-primary: #000;
-  --text-secondary: #666;
-
-  --button-primary-hover: #383838;
-  --button-secondary-hover: #f2f2f2;
-  --button-secondary-border: #ebebeb;
-
-  display: flex;
+/* ── HERO ───────────────────────────────────────────── */
+.hero {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-geist-sans);
-  background-color: var(--background);
-}
-
-.main {
-  display: flex;
-  min-height: 100vh;
-  width: 100%;
-  max-width: 800px;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-between;
-  background-color: var(--foreground);
-  padding: 120px 60px;
-}
-
-.intro {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
-  gap: 24px;
+  justify-content: flex-end;
+  padding: 0 60px 80px;
+  overflow: hidden;
 }
 
-.intro h1 {
-  max-width: 320px;
-  font-size: 40px;
+.heroBgText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(120px, 18vw, 280px);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  -webkit-text-stroke: 1px rgba(138, 108, 42, 0.22);
+  color: rgba(138, 108, 42, 0.07);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.heroLine {
+  width: 1px;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  margin-bottom: 40px;
+}
+
+.heroEyebrow {
+  font-size: 9px;
   font-weight: 600;
-  line-height: 48px;
-  letter-spacing: -2.4px;
-  text-wrap: balance;
-  color: var(--text-primary);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
 }
 
-.intro p {
-  max-width: 440px;
-  font-size: 18px;
-  line-height: 32px;
-  text-wrap: balance;
-  color: var(--text-secondary);
-}
-
-.intro a {
+.heroH1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(52px, 7vw, 96px);
   font-weight: 500;
-  color: var(--text-primary);
+  line-height: 1.05;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+  max-width: 900px;
+  margin-bottom: 40px;
 }
 
-.ctas {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 440px;
-  gap: 16px;
-  font-size: 14px;
+.heroH1 em {
+  font-style: italic;
+  color: var(--gold-bright);
 }
 
-.ctas a {
+.heroSub {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--muted);
+  letter-spacing: 1px;
+  line-height: 1.9;
+  max-width: 520px;
+  margin-bottom: 48px;
+}
+
+.heroFooter {
   display: flex;
-  justify-content: center;
+  gap: 0;
+  align-items: flex-end;
+}
+
+.heroStatWrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 60px;
+}
+
+.heroStat {}
+
+.heroStatNum {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 44px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.heroStatNum sup {
+  font-size: 20px;
+  color: var(--gold);
+}
+
+.heroStatLabel {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.heroDivider {
+  width: 1px;
+  height: 48px;
+  background: var(--border-light);
+  margin: 0 60px 8px;
+}
+
+/* ── SHARED ─────────────────────────────────────────── */
+.eyebrow {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  display: flex;
   align-items: center;
-  height: 40px;
-  padding: 0 16px;
-  border-radius: 128px;
-  border: 1px solid transparent;
-  transition: 0.2s;
-  cursor: pointer;
-  width: fit-content;
-  font-weight: 500;
+  gap: 16px;
 }
 
-a.primary {
-  background: var(--text-primary);
-  color: var(--background);
+.eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+
+.sectionTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 3.5vw, 56px);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 48px;
+}
+
+.sectionTitle em {
+  font-style: italic;
+  color: var(--gold-bright);
+}
+
+/* ── ABOUT ──────────────────────────────────────────── */
+.about {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 80vh;
+  border-top: 1px solid var(--border);
+}
+
+.aboutLeft {
+  padding: 100px 60px;
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.aboutRight {
+  padding: 100px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 32px;
+}
+
+.aboutTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(40px, 4vw, 64px);
+  font-weight: 500;
+  line-height: 1.05;
+  color: var(--cream);
+  margin-bottom: 32px;
+}
+
+.aboutTitle em {
+  font-style: italic;
+  color: var(--gold-bright);
+}
+
+.aboutBody {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+.aboutBody strong {
+  color: var(--cream);
+  font-weight: 600;
+}
+
+.pillar {
+  border-left: 2px solid var(--border);
+  padding-left: 24px;
+}
+
+.pillarNum {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+.pillarName {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--cream);
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.pillarDesc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ── PORTFOLIO ──────────────────────────────────────── */
+.portfolio {
+  position: relative;
+  z-index: 1;
+  padding: 100px 0;
+  border-top: 1px solid var(--border);
+}
+
+.portfolioHeader {
+  padding: 0 60px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.portfolioCount {
+  font-family: 'Courier Prime', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  text-align: right;
+  line-height: 1.8;
+}
+
+.portfolioGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.card {
+  background: var(--card);
+  padding: 36px 32px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.card:hover {
+  background: #f0ece4;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.card:hover::after {
+  transform: scaleX(1);
+}
+
+.cardAcq {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-family: 'Courier Prime', monospace;
+  font-size: 8px;
+  color: var(--border-light);
+  letter-spacing: 1px;
+}
+
+.cardSector {
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
   gap: 8px;
 }
 
-a.secondary {
-  border-color: var(--button-secondary-border);
+.cardDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
 }
 
-/* Enable hover only on non-touch devices */
-@media (hover: hover) and (pointer: fine) {
-  a.primary:hover {
-    background: var(--button-primary-hover);
-    border-color: transparent;
-  }
-
-  a.secondary:hover {
-    background: var(--button-secondary-hover);
-    border-color: transparent;
-  }
+.cardName {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
 }
 
-@media (max-width: 600px) {
-  .main {
-    padding: 48px 24px;
-  }
-
-  .intro {
-    gap: 16px;
-  }
-
-  .intro h1 {
-    font-size: 32px;
-    line-height: 40px;
-    letter-spacing: -1.92px;
-  }
+.cardRegion {
+  font-family: 'Courier Prime', monospace;
+  font-size: 8px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+  text-transform: uppercase;
 }
 
-@media (prefers-color-scheme: dark) {
-  .logo {
-    filter: invert();
-  }
+.cardDesc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+}
 
-  .page {
-    --background: #000;
-    --foreground: #000;
+/* ── NUMBERS ────────────────────────────────────────── */
+.numbers {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
 
-    --text-primary: #ededed;
-    --text-secondary: #999;
+.numberCell {
+  background: var(--ink2);
+  padding: 48px 32px;
+}
 
-    --button-primary-hover: #ccc;
-    --button-secondary-hover: #1a1a1a;
-    --button-secondary-border: #1a1a1a;
-  }
+.numberVal {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 52px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.numberVal sup {
+  font-size: 24px;
+  color: var(--gold);
+}
+
+.numberLabel {
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── STATEMENT ──────────────────────────────────────── */
+.statement {
+  position: relative;
+  z-index: 1;
+  padding: 120px 60px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.statement::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(138, 108, 42, 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.statementQuote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--cream);
+  max-width: 900px;
+  margin: 0 auto 32px;
+}
+
+.statementQuote em {
+  font-style: normal;
+  color: var(--gold-bright);
+}
+
+.statementAttr {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ── LEADERSHIP ─────────────────────────────────────── */
+.leadership {
+  position: relative;
+  z-index: 1;
+  padding: 100px 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.leaderGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.leaderCard {
+  background: var(--card);
+  padding: 36px 28px;
+}
+
+.leaderInitial {
+  width: 52px;
+  height: 52px;
+  border: 1px solid var(--border-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+
+.leaderName {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.leaderTitle {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.leaderBio {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── PRESS ──────────────────────────────────────────── */
+.press {
+  position: relative;
+  z-index: 1;
+  padding: 80px 60px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pressGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.pressCard {
+  background: var(--card);
+  padding: 32px 28px;
+}
+
+.pressSource {
+  font-family: 'Courier Prime', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.pressHeadline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.pressDate {
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 2px;
+  font-family: 'Courier Prime', monospace;
 }

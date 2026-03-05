@@ -1,0 +1,122 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.inner {
+  max-width: 680px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.code {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(120px, 20vw, 200px);
+  font-weight: 500;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(138, 108, 42, 0.25);
+  letter-spacing: -4px;
+  margin-bottom: 0;
+  user-select: none;
+}
+
+.divider {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 24px 0 32px;
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+.title em {
+  font-style: italic;
+  color: var(--gold-bright);
+}
+
+.body {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 48px;
+  letter-spacing: 0.3px;
+}
+
+.facts {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  border: 1px solid var(--border);
+  background: var(--card);
+  margin-bottom: 48px;
+  width: 100%;
+}
+
+.fact {
+  padding: 20px 28px;
+  flex: 1;
+}
+
+.factLabel {
+  font-family: 'Courier Prime', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+
+.factVal {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--cream);
+}
+
+.factDivider {
+  width: 1px;
+  height: 48px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.cta {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 14px 28px;
+  transition: background 0.2s, color 0.2s;
+  margin-bottom: 48px;
+}
+
+.cta:hover {
+  background: var(--gold);
+  color: var(--ink);
+}
+
+.legal {
+  font-family: 'Courier Prime', monospace;
+  font-size: 8px;
+  color: var(--border-light);
+  letter-spacing: 2px;
+  line-height: 1.8;
+}
