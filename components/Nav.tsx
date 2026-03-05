@@ -18,7 +18,7 @@ export default function Nav() {
         <Link href="/investors">Investor Relations</Link>
         <Link href="/careers">Careers</Link>
       </div>
-      <div className={styles.cta}>Contact</div>
+      <Link href="/contact" className={styles.cta}>Contact</Link>
     </nav>
   )
 }

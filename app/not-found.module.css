@@ -3,28 +3,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 60px 40px;
+  padding: 80px 24px;
   position: relative;
   z-index: 1;
 }
 
 .inner {
-  max-width: 680px;
+  max-width: 640px;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  animation: riseIn 0.6s ease forwards;
 }
 
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 404 ───────────────────────────────────────────────── */
 .code {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(120px, 20vw, 200px);
+  font-size: clamp(100px, 18vw, 160px);
   font-weight: 500;
   line-height: 1;
   color: transparent;
   -webkit-text-stroke: 1px rgba(138, 108, 42, 0.25);
   letter-spacing: -4px;
-  margin-bottom: 0;
   user-select: none;
 }
 
@@ -32,16 +38,17 @@
   width: 48px;
   height: 1px;
   background: var(--gold);
-  margin: 24px 0 32px;
+  margin: 20px 0 28px;
 }
 
+/* ── TITLE ─────────────────────────────────────────────── */
 .title {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(26px, 4vw, 42px);
   font-weight: 500;
-  line-height: 1.15;
+  line-height: 1.2;
   color: var(--cream);
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .title em {
@@ -49,28 +56,28 @@
   color: var(--gold-bright);
 }
 
-.body {
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--muted);
-  line-height: 1.9;
-  margin-bottom: 48px;
-  letter-spacing: 0.3px;
-}
-
+/* ── FACTS ─────────────────────────────────────────────── */
 .facts {
-  display: flex;
-  align-items: center;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--border);
   border: 1px solid var(--border);
-  background: var(--card);
-  margin-bottom: 48px;
   width: 100%;
+  margin-bottom: 44px;
 }
 
 .fact {
-  padding: 20px 28px;
-  flex: 1;
+  background: var(--card);
+  padding: 16px 18px;
+  opacity: 0;
+  animation: factIn 0.35s ease forwards;
+  animation-delay: calc(var(--i) * 0.08s + 0.3s);
+}
+
+@keyframes factIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .factLabel {
@@ -78,45 +85,229 @@
   font-size: 8px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 6px;
+  margin-bottom: 5px;
 }
 
 .factVal {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--cream);
 }
 
-.factDivider {
-  width: 1px;
-  height: 48px;
-  background: var(--border);
-  flex-shrink: 0;
+/* ── THE THROBBING WHY BUTTON ──────────────────────────── */
+.whyBtn {
+  background: none;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: 'Courier Prime', monospace;
+  font-size: 13px;
+  letter-spacing: 2px;
+  padding: 18px 32px;
+  cursor: pointer;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: background 0.2s, color 0.2s;
+  animation: throb 1.8s ease-in-out infinite;
+  position: relative;
 }
 
+.whyBtn::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 1px solid var(--gold);
+  opacity: 0;
+  animation: throbRing 1.8s ease-in-out infinite;
+}
+
+@keyframes throb {
+  0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(138,108,42,0); }
+  50%       { transform: scale(1.02); box-shadow: 0 0 0 8px rgba(138,108,42,0.08); }
+}
+
+@keyframes throbRing {
+  0%   { inset: -4px; opacity: 0.6; }
+  100% { inset: -16px; opacity: 0; }
+}
+
+.whyBtn:hover {
+  background: var(--gold);
+  color: var(--ink);
+  animation: none;
+}
+
+.whyBtn:hover::before { display: none; }
+
+.whyBtnText { flex: 1; }
+.whyBtnArrow {
+  font-size: 18px;
+  animation: bounce 1.8s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(4px); }
+}
+
+/* ── CONFESSION ────────────────────────────────────────── */
+.confession {
+  width: 100%;
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cLine {
+  font-family: 'Courier Prime', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+  transition: opacity 0.3s, color 0.3s;
+  padding: 2px 0;
+}
+
+.cBig {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 22px !important;
+  font-weight: 500;
+  color: var(--cream) !important;
+  margin: 12px 0 4px;
+  border-left: 2px solid var(--gold);
+  padding-left: 16px !important;
+}
+
+.cPast {
+  color: var(--muted);
+  opacity: 0.65;
+}
+
+.cCurrent {
+  color: var(--cream);
+  opacity: 1;
+  animation: lineIn 0.2s ease forwards;
+}
+
+@keyframes lineIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── HAYSTAK CARD ──────────────────────────────────────── */
+.haystakCard {
+  width: 100%;
+  border: 1px solid var(--gold);
+  background: var(--gold-dim);
+  padding: 40px 36px;
+  margin-top: 24px;
+  animation: cardIn 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  position: relative;
+  overflow: hidden;
+}
+
+.haystakCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top left, rgba(138,108,42,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.haystakEyebrow {
+  font-family: 'Courier Prime', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.haystakTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 56px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 16px;
+  letter-spacing: 1px;
+}
+
+.haystakDesc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.9;
+  margin-bottom: 28px;
+  max-width: 480px;
+  font-weight: 500;
+}
+
+.haystakBtn {
+  display: inline-block;
+  background: var(--gold);
+  color: var(--ink);
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  transition: opacity 0.2s, transform 0.2s;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+
+.haystakBtn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.haystakSub {
+  font-family: 'Courier Prime', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  line-height: 1.8;
+  border-top: 1px solid var(--border);
+  padding-top: 16px;
+}
+
+/* ── CTA ───────────────────────────────────────────────── */
 .cta {
+  display: inline-block;
   font-size: 9px;
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--gold);
-  border: 1px solid var(--gold);
-  padding: 14px 28px;
-  transition: background 0.2s, color 0.2s;
-  margin-bottom: 48px;
+  color: var(--muted);
+  padding: 12px 0;
+  transition: color 0.2s;
+  margin-bottom: 24px;
+  margin-top: 8px;
 }
 
-.cta:hover {
-  background: var(--gold);
-  color: var(--ink);
-}
+.cta:hover { color: var(--gold); }
 
+/* ── LEGAL ─────────────────────────────────────────────── */
 .legal {
   font-family: 'Courier Prime', monospace;
   font-size: 8px;
   color: var(--border-light);
   letter-spacing: 2px;
   line-height: 1.8;
+}
+
+/* ── MOBILE ────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .page { padding: 60px 20px; }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .whyBtn { font-size: 11px; padding: 16px 20px; }
+  .haystakCard { padding: 28px 24px; }
+  .haystakTitle { font-size: 44px; }
 }
